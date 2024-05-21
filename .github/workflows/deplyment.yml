@@ -1,0 +1,56 @@
+name: CI/CD for the SDK-JS
+
+on: push
+
+jobs:
+  deploy-to-staging:
+    if: github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '[Skip CI]')
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        env:
+          ENV: staging
+          SDK_REBILL_GATEWAY: ${{ secrets.SDK_REBILL_GATEWAY_STG }}
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::913804721536:role/DeployerSDKV2
+          role-duration-seconds: 1200
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: sa-east-1
+      - name: Deploy demo add-card
+        run: aws s3 sync ./add-card s3://rebill-sdk-demo-stg/add-card --acl public-read --follow-symlinks
+      - name: Deploy demo transaction
+        run: aws s3 sync ./transaction s3://rebill-sdk-demo-stg/transaction --acl public-read --follow-symlinks
+      - name: Invalidate Demo CDN Cache
+        run: aws cloudfront create-invalidation --distribution-id "E1ZERMJK8L1AMW" --paths "/*"
+
+
+  deploy-to-prod:
+    if: github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '[Skip CI]')
+    runs-on: ubuntu-latest
+    environment: production
+    needs: [deploy-to-staging]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        env:
+          ENV: production
+          SDK_REBILL_GATEWAY: ${{ secrets.SDK_REBILL_GATEWAY_PROD }}
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::398819562765:role/DeployerSDKV2
+          role-duration-seconds: 1200
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: sa-east-1
+      - name: Deploy demo add-card
+        run: aws s3 sync ./add-card s3://rebill-sdk-demo/add-card --acl public-read --follow-symlinks
+      - name: Deploy demo transaction
+        run: aws s3 sync ./transaction s3://rebill-sdk-demo/transaction --acl public-read --follow-symlinks
+      - name: Invalidate Demo CDN Cache
+        run: aws cloudfront create-invalidation --distribution-id "E3NPYVBOBPKK78" --paths "/*"
