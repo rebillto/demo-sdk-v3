@@ -12,9 +12,7 @@ Rebill SDK provides a seamless and secure integration of Rebill's payment soluti
 - Efficient Management: Tokenize (save) customer cards for future transactions securely and efficiently.
 
 
-## Quickstart
-
-## Quickstart
+## Quickstart 
 
 Learn how to integrate our JavaScript SDK into your web application and start processing payments across Latin America in **5 simple steps**.
 
