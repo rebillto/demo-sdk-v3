@@ -10,7 +10,7 @@
       sizes="32x32"
       href="https://seeklogo.com/images/P/patagonia-cerveza-logo-E4330326F4-seeklogo.com.png"
     />
-    <script src="https://sdk.rebill.dev/v3/rebill.js"></script>
+    <script src="https://sdk.rebill.to/v3/rebill.js"></script>
     <link href="./output.css" rel="stylesheet" />
     <title>Rebill | Demo STG Transaction | V3</title>
   </head>
@@ -170,15 +170,13 @@
     </main>
 
     <script>
-      const rebill = new Rebill(
-        "pk_test_eee4f877-6b08-4b35-8cc1-b283f97f6578"
-      );
+      const rebill = new Rebill("pk_a81ba1ee-b0d8-496b-bb40-7a64023c7a14");
 
       const checkoutForm = rebill.checkout.create({
-        id: "fa6e0f9f-8c2d-4a6d-88e9-e7a25eb52e3a",
+        id: "56d28b7a-19b1-41fa-ad85-b4dbd7492ca8",
       });
 
-      await checkoutForm.mount("rebill");
+      checkoutForm.mount("rebill");
     </script>
   </body>
 </html>

@@ -10,7 +10,7 @@
       sizes="32x32"
       href="https://seeklogo.com/images/P/patagonia-cerveza-logo-E4330326F4-seeklogo.com.png"
     />
-    <script src="https://sdk.rebill.dev/v3/rebill.js"></script>
+    <script src="https://sdk.rebill.com/v3/rebill.js"></script>
     <link href="./output.css" rel="stylesheet" />
     <title>Rebill | Demo STG Add Card | V3</title>
   </head>
@@ -170,10 +170,10 @@
     </main>
 
     <script>
-      const rebill = new Rebill("pk_test_eee4f877-6b08-4b35-8cc1-b283f97f6578");
+      const rebill = new Rebill("pk_a81ba1ee-b0d8-496b-bb40-7a64023c7a14");
 
       const cardForm = rebill.card.create(
-        "923afd74-2fc8-4766-a98a-c7781a12de9a"
+        "e77f38c8-174c-4cdb-98e6-b9bc01f8f1ab"
       );
 
       cardForm.mount("rebill");
