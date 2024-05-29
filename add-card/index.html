@@ -12,7 +12,7 @@
     />
     <script src="https://sdk.rebill.com/v3/rebill.js"></script>
     <link href="./output.css" rel="stylesheet" />
-    <title>Rebill | Demo STG Add Card | V3</title>
+    <title>Rebill | Demo Add Card | V3</title>
   </head>
   <body>
     <nav class="bg-white shadow">
@@ -164,8 +164,8 @@
     <main
       class="flex flex-col justify-center items-center py-10 w-full gap-6 px-3 mb-24"
     >
-      <div id="rebill" class="w-[70vw] h-[100vh]">
-        <!-- Here wil be inserted the checkout -->
+      <div id="rebill">
+        <!-- Here wil be inserted the form -->
       </div>
     </main>
 
@@ -175,6 +175,15 @@
       const cardForm = rebill.card.create(
         "e77f38c8-174c-4cdb-98e6-b9bc01f8f1ab"
       );
+
+      cardForm.on("success", (e) => {
+        console.log(e);
+        alert("SUCCESS!");
+      });
+      cardForm.on("error", (e) => {
+        console.log(e);
+        alert("ERROR!");
+      });
 
       cardForm.mount("rebill");
     </script>
