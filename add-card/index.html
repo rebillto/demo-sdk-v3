@@ -8,7 +8,7 @@
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="https://seeklogo.com/images/P/patagonia-cerveza-logo-E4330326F4-seeklogo.com.png"
+      href="https://my.rebill.com/4e65ada6e6c2eb8cf929.ico"
     />
     <script src="https://sdk.rebill.com/v3/rebill.js"></script>
     <link href="./output.css" rel="stylesheet" />
@@ -20,11 +20,18 @@
         <div class="flex h-16 justify-between">
           <div class="flex">
             <div class="flex flex-shrink-0 items-center">
-              <img
-                class="h-8 w-auto"
-                src="https://seeklogo.com/images/P/patagonia-cerveza-logo-E4330326F4-seeklogo.com.png"
-                alt="Your Company"
-              />
+              <svg
+                width="19"
+                height="24"
+                viewBox="0 0 19 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 23.5879V0.153076H9.67925C14.9411 0.153076 18.0593 2.94642 18.0593 7.65613V7.68861C18.0593 10.7743 16.419 13.3403 13.8205 14.3634L18.7576 23.5879H13.2034L8.83475 15.0942H4.90459V23.5879H0ZM4.90459 11.3752H9.14332C11.5794 11.3752 13.041 9.99474 13.041 7.68861V7.65613C13.041 5.41495 11.4982 3.9858 9.07836 3.9858H4.90459V11.3752Z"
+                  fill="#033046"
+                />
+              </svg>
             </div>
             <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
               <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
@@ -178,11 +185,9 @@
 
       cardForm.on("success", (e) => {
         console.log(e);
-        alert("SUCCESS!");
       });
       cardForm.on("error", (e) => {
         console.log(e);
-        alert("ERROR!");
       });
 
       cardForm.mount("rebill");
