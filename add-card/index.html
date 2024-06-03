@@ -15,7 +15,7 @@
     <title>Rebill | Demo Add Card | V3</title>
   </head>
   <body>
-    <nav class="bg-white shadow">
+    <nav style="background-color: #0056f604" class="shadow">
       <div class="mx-auto max-w-8xl px-12 sm:px-6 lg:px-24">
         <div class="flex h-16 justify-between">
           <div class="flex">
@@ -171,16 +171,16 @@
     <main
       class="flex flex-col justify-center items-center py-10 w-full gap-6 px-3 mb-24"
     >
-      <div id="rebill">
+      <div style="width: 600px" id="rebill">
         <!-- Here wil be inserted the form -->
       </div>
     </main>
 
     <script>
-      const rebill = new Rebill("pk_a81ba1ee-b0d8-496b-bb40-7a64023c7a14");
+      const rebill = new Rebill("pk_test_8f7d1e86-0734-11ef-92e2-0e2c69b9aaf7");
 
       const cardForm = rebill.card.create(
-        "e77f38c8-174c-4cdb-98e6-b9bc01f8f1ab"
+        "d4ce06a8-5c27-486d-99d2-8a399b75e2c7"
       );
 
       cardForm.on("success", (e) => {
