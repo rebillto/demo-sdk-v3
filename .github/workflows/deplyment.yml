@@ -22,9 +22,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: sa-east-1
       - name: Deploy demo add-card
-        run: aws s3 sync ./add-card s3://rebill-sdk-demo-stg/add-card --acl public-read --follow-symlinks
-      - name: Deploy demo transaction
-        run: aws s3 sync ./transaction s3://rebill-sdk-demo-stg/transaction --acl public-read --follow-symlinks
+        run: aws s3 sync ./card-tokenization s3://rebill-sdk-demo-stg/add-card --acl public-read --follow-symlinks
+      - name: Deploy demo checkout
+        run: aws s3 sync ./checkout s3://rebill-sdk-demo-stg/transaction --acl public-read --follow-symlinks
       - name: Invalidate Demo CDN Cache
         run: aws cloudfront create-invalidation --distribution-id "E1ZERMJK8L1AMW" --paths "/*"
 
@@ -49,8 +49,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: sa-east-1
       - name: Deploy demo add-card
-        run: aws s3 sync ./add-card s3://rebill-sdk-demo/add-card --acl public-read --follow-symlinks
-      - name: Deploy demo transaction
-        run: aws s3 sync ./transaction s3://rebill-sdk-demo/transaction --acl public-read --follow-symlinks
+        run: aws s3 sync ./card-tokenization s3://rebill-sdk-demo/add-card --acl public-read --follow-symlinks
+      - name: Deploy demo checkout
+        run: aws s3 sync ./checkout s3://rebill-sdk-demo/transaction --acl public-read --follow-symlinks
       - name: Invalidate Demo CDN Cache
         run: aws cloudfront create-invalidation --distribution-id "E3NPYVBOBPKK78" --paths "/*"
