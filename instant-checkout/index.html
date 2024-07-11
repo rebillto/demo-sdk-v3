@@ -171,16 +171,23 @@
     <main
       class="flex flex-col justify-center items-center py-10 w-full gap-6 px-3 mb-24"
     >
-      <div id="rebill" class="w-[70vw] h-[100vh]">
+      <div id="rebill" class="w-[70vw]">
         <!-- Here wil be inserted the checkout -->
       </div>
     </main>
 
     <script>
-      const rebill = new Rebill("pk_a81ba1ee-b0d8-496b-bb40-7a64023c7a14");
+      const rebill = new Rebill("pk_test_f3836425-b1db-4870-8dff-fd68ec6271c9");
 
       const checkoutForm = rebill.checkout.create({
-        id: "56d28b7a-19b1-41fa-ad85-b4dbd7492ca8",
+        name: "Rebill instant subscription",
+        description: "My new rebill subscription",
+        amount: 1200,
+        currency: "ARS",
+        frequency: {
+          period: "month",
+          quantity: 1,
+        },
       });
 
       checkoutForm.on("approved", (e) => {

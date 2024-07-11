@@ -12,7 +12,7 @@
     />
     <script src="https://sdk.rebill.com/v3/rebill.js"></script>
     <link href="./output.css" rel="stylesheet" />
-    <title>Rebill | Demo Add Card | V3</title>
+    <title>Rebill | Demo Renew subscription card | V3</title>
   </head>
   <body>
     <nav style="background-color: #0056f604" class="shadow">
@@ -171,16 +171,16 @@
     <main
       class="flex flex-col justify-center items-center py-10 w-full gap-6 px-3 mb-24"
     >
-      <div style="width: 600px" id="rebill">
+      <div style="width: 500px" id="rebill">
         <!-- Here wil be inserted the form -->
       </div>
     </main>
 
     <script>
-      const rebill = new Rebill("pk_test_8f7d1e86-0734-11ef-92e2-0e2c69b9aaf7");
+      const rebill = new Rebill("pk_test_f3836425-b1db-4870-8dff-fd68ec6271c9");
 
-      const cardForm = rebill.card.create(
-        "d4ce06a8-5c27-486d-99d2-8a399b75e2c7"
+      const cardForm = rebill.card.renew(
+        "85567d68-de16-47fc-9d9e-35f862002753"
       );
 
       cardForm.on("success", (e) => {
